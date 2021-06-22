@@ -3,12 +3,9 @@ package kris.bricktest;
 import java.io.File;
 import java.util.List;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Main {
-	ChromeDriver chrome;
 	TokopediaNavigator navigator;
 
 	public static void main(String[] args) throws Exception {

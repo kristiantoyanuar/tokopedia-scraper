@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TokopediaNavigator {
 	private WebDriver driver;
-	private static final String PRODUCT_CSS_CLASS_XPATH = "//div[@class = 'css-13l3l78 e1nlzfl10']/div";
+	public static final String PRODUCT_CSS_CLASS_XPATH = "//div[@class = 'css-13l3l78 e1nlzfl10']/div";
 
 	public TokopediaNavigator() {
 		ChromeOptions options = new ChromeOptions();

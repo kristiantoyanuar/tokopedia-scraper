@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class DefaultSearchPage implements SearchPage {
-	private static final String PRODUCT_CSS_CLASS_XPATH = "//div[@class = 'css-13l3l78 e1nlzfl10']/div";
 	private TokopediaNavigator tokpedNavigator;
 	private Category category;
 
@@ -25,7 +24,7 @@ public class DefaultSearchPage implements SearchPage {
 			while (topProducts.size() < count) {
 				tokpedNavigator.openCategoryPage(category, page);
 				tokpedNavigator.scrollToBottom();
-				List<WebElement> els = tokpedNavigator.findElements(By.xpath(PRODUCT_CSS_CLASS_XPATH));
+				List<WebElement> els = tokpedNavigator.findElements(By.xpath(TokopediaNavigator.PRODUCT_CSS_CLASS_XPATH));
 
 				for (WebElement el : els) {
 					if (topProducts.size() < count) {

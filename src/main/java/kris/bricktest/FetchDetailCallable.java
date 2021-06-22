@@ -1,9 +1,7 @@
 package kris.bricktest;
 
-import java.io.IOException;
 import java.util.concurrent.Callable;
 
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlDivision;
 import com.gargoylesoftware.htmlunit.html.HtmlMeta;
@@ -22,8 +20,7 @@ public class FetchDetailCallable implements Callable<Product> {
 		WebClient webClient = null;
 		try {
 			webClient = new WebClient();
-			final HtmlPage page = webClient.getPage(
-					"https://www.tokopedia.com/gudang-hp/xiaomi-redmi-9t-4-64-gb-garansi-resmi-abu-abu?whid=0");
+			final HtmlPage page = webClient.getPage(product.getProductUrl());
 			String description = ((HtmlDivision) page.getDocumentElement()
 					.getByXPath("//div[@data-testid='lblPDPDescriptionProduk']").get(0)).asNormalizedText();
 			this.product.setDescription(description);
@@ -34,9 +31,8 @@ public class FetchDetailCallable implements Callable<Product> {
 
 			System.out.println(Thread.currentThread().getName() + " is done");
 			return this.product;
-		} catch (FailingHttpStatusCodeException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Unable obtain details for " + this.product.getName() + ". Skipping...");
 		} finally {
 			webClient.close();
 		}
