@@ -19,7 +19,7 @@ class Top100PhoneTest {
 	void test() throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		navigator = new TokopediaNavigator();
-		List<Product> top100 = new DefaultSearchPage(navigator, Category.HANDPHONE).top(100);
+		List<Product> top100 = new DefaultSearchPage(navigator, Category.HANDPHONE).top(10);
 		AsyncFetchDetails asyncFetchDetails = new AsyncFetchDetails(top100);
 		asyncFetchDetails.run();
 		new ResultExporter(asyncFetchDetails.getProducts()).toCSV(new File("result.csv"));

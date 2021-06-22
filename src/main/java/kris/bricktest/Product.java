@@ -143,9 +143,10 @@ public class Product {
 	}
 
 	public String toCommaString() {
-		return Objects.toString(this.name, "") + "," + Objects.toString(this.price, "") + ","
-				+ Objects.toString(this.rating, "") + "," + Objects.toString(this.sellerName, "") + ","
-				+ Objects.toString(this.imageUrl, "") + ",\""
-				+ Objects.toString(this.description, "").replace("\n", "").replace("\r", "") + "\"";
+		return String.join(",", Objects.toString(this.name, ""), Objects.toString(this.price, ""),
+				Objects.toString(this.rating, ""), Objects.toString(this.sellerName, ""),
+				Objects.toString(this.sellerName, ""), Objects.toString(this.price, ""),
+				Objects.toString(this.imageUrl, ""),
+				"\"" + Objects.toString(this.description, "").replace("\n", "").replace("\r", ""));
 	}
 }
