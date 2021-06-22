@@ -21,10 +21,8 @@ public class ResultExporter {
 			return;
 		}
 
-		OutputStream os = null;
-		try {
+		try (OutputStream os = new FileOutputStream(file)) {
 			System.out.println("Writing to " + file.getAbsolutePath());
-			os = new FileOutputStream(file);
 			for (Product p : this.products) {
 				String line = p.toCommaString() + getNewLine();
 				os.write(line.getBytes());
@@ -35,12 +33,6 @@ public class ResultExporter {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			try {
-				os.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 
